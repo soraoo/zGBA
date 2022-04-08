@@ -1,29 +1,12 @@
-includes("toolchains/*.lua")
 includes("rules/*.lua")
 
-target("zGBA-objs")
-    set_targetdir("build/.objs")
-    set_toolchains("gba")
-    set_kind("object")
-
-    add_rules("gba-compile")
-    add_files("Engine/**.cpp")
-
-target("zGBA-binary")
-    set_targetdir("build/.bins")
-    set_toolchains("gba")
-    set_kind("object")
-
-    add_rules("gba-binary")
-    add_files("build/.objs/*.o")
-
 target("zGBA")
-    set_targetdir("build/release")
-    set_toolchains("gba")
+    set_targetdir("build")
     set_kind("object")
 
-    add_rules("gba-copy")
-    add_files("build/.bins/*.b")
+    add_rules("gba-release")
+    add_files("Engine/**.cpp")
+target_end()
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
